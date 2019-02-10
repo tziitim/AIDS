@@ -23,6 +23,11 @@
 #  
 
 
+import tensorflow as tf;
+
+
+
+
 
 blank = 1;
 
@@ -37,19 +42,19 @@ def tictactoe():
     x = input();
     y = input();
     
-    Matrix[int(x)][int(y)] = 1;
+    Matrix[max(min(int(x),3),0)-1][max(min(int(y),3),0)-1] = 1;
     
     tictactoe();
     
     
     
 def printboard():
-	
-	print(p(Matrix[0][0]) + "|" + p(Matrix[1][0]) + "|" + p(Matrix[2][0]));
-	print("-+-+-");
-	print(p(Matrix[0][1]) + "|" + p(Matrix[1][1]) + "|" + p(Matrix[2][1]));
-	print("-+-+-");
-	print(p(Matrix[0][2]) + "|" + p(Matrix[1][2]) + "|" + p(Matrix[2][2]));
+	print("   1 2 3\n");
+	print(" 1 "+p(Matrix[0][0]) + "|" + p(Matrix[1][0]) + "|" + p(Matrix[2][0]));
+	print("   "+"-+-+-");
+	print(" 2 "+p(Matrix[0][1]) + "|" + p(Matrix[1][1]) + "|" + p(Matrix[2][1]));
+	print("   "+"-+-+-");
+	print(" 3 "+p(Matrix[0][2]) + "|" + p(Matrix[1][2]) + "|" + p(Matrix[2][2]));
 
 def p(i):
     if i == 0:
@@ -60,8 +65,47 @@ def p(i):
         return "O";
     return " ";
 
+
+
+########################################################################
+#
+##-AI
+#
+########################################################################
+
+
+def AI():
+	
+	
+	print("[INFO]: Initalizing Placeholders...");
+	tf.placeholder_with_default(0,tf.float32,name="g00",shape=[1,1]);
+	tf.placeholder_with_default(0,tf.float32,name="g01",shape=[1,1]);
+	tf.placeholder_with_default(0,tf.float32,name="g02",shape=[1,1]);
+	tf.placeholder_with_default(0,tf.float32,name="g10",shape=[1,1]);
+	tf.placeholder_with_default(0,tf.float32,name="g11",shape=[1,1]);
+	tf.placeholder_with_default(0,tf.float32,name="g12",shape=[1,1]);
+	tf.placeholder_with_default(0,tf.float32,name="g20",shape=[1,1]);
+	tf.placeholder_with_default(0,tf.float32,name="g21",shape=[1,1]);
+	tf.placeholder_with_default(0,tf.float32,name="g22",shape=[1,1]);
+	print(" Done.\n");
+	
+	print("[INFO]: Creating graph...");
+	
+	while 1==1:
+		
+		print("");
+
+
+
+
+
+
+
+########################################################################
+
+
 def main(args):
-    tictactoe();
+    AI();
     return 0
 
 if __name__ == '__main__':
