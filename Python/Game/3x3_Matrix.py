@@ -1,14 +1,38 @@
+import math
+
 blank = 1;
 
 Matrix = [[0 for x in range(3)] for y in range(3)];
-												
+
+def istaken(pos):
+    if Matrix[int(pos % 3)][int((pos/3))] == 0:
+        return 0;
+    return 1;
+
+def playerone():
+    xy = max(min(int(input()),8),0);
+    #x = input();
+    #y = input();
+    if istaken(xy):
+        xy = max(min(int(input()),8),0);
+	
+    Matrix[int(xy % 3)][int((xy/3))] = 1;
+
+def playertwo():
+    xy = max(min(int(input()),8),0);
+    #x = input();
+    #y = input();
+    if istaken(xy):
+        xy = max(min(int(input()),8),0);
+    Matrix[int(xy % 3)][int((xy/3))] = 2;							
 def tictactoe():
     print("Your computer has succsesfully acquired AIDS");
     printboard();
-    x = input();
-    y = input();
-    
-    Matrix[max(min(int(x),3),0)-1][max(min(int(y),3),0)-1] = 1;
+    playerone();
+    printboard();
+    playertwo();
+    #
+    #Matrix[max(min(int(x),3),0)-1][max(min(int(y),3),0)-1] = 1;
     
     tictactoe();
     
