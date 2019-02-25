@@ -3,7 +3,18 @@ import tensorflow as tf;
 blank = 1;
 
 Matrix = [[0 for x in range(3)] for y in range(3)];
-												
+
+def GetWinner():#THIS FUNCTION IS INCOMPLETE!!!  We still need to fix over detection
+    total = sum(map(sum, Matrix))
+    total = total % 9
+    if total >= 4:
+        return 2 #Its a tie
+    if total % 2:
+	return 1;#X wins
+    if total % 2 == 0:
+        return 2;#O Wins
+    return -1;#Game is not over.
+
 def tictactoe():
     print("Your computer has succsesfully acquired AIDS");
     printboard();
