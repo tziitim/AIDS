@@ -4,19 +4,38 @@ blank = 1;
 
 SIZE = 3;
 
-Matrix = [[0 for x in range(3)] for y in range(3)];
+Matrix = [[0 for x in range(SIZE)] for y in range(SIZE)];
 
 
 def getWinner():#THIS FUNCTION IS INCOMPLETE!!!  We still need to fix over detection
-    total = sum(map(sum, Matrix))
-    total = total % SIZE
-    if total >= 4:
-        return "TIED!" #Its a tie
-    if total % 2 == 1:
-        return "O!";#X wins
-    if total % 2 == 0:
-        return "Sadly, X...";#O Wins
-    return 	10;#Game is not over.
+    #total = sum(map(sum, Matrix))
+    #total = total % SIZE
+    #if total >= 4:
+    #    return "TIED!" #Its a tie
+    #if total % 2 == 1:
+    #    return "O!";#X wins
+    #if total % 2 == 0:
+    #    return "Sadly, X...";#O Wins
+    #return     10;#Game is not over.
+    
+    for i in range(0,SIZE):
+        x = 1;
+        o = 1;
+        for j in range(0,SIZE):
+            for k in range(0,SIZE):
+                if Matrix[j][k] != 1:
+                    print("Matrix[" + str(j) + "]["+ str(k) + "] != X");
+                    x = 0
+                if Matrix[j][k] != 2:
+                    print("Matrix[" + str(j) + "]["+ str(k) + "] != O");
+                    o = 0
+        if o == 1:
+            return 'O';
+        if x == 1:
+            return 'X'
+            
+    return -1;
+    
 
 
 
@@ -31,7 +50,7 @@ def playerone():
     #y = input();
     if istaken(xy):
         xy = max(min(int(input()),8),0);
-	
+    
     Matrix[int(xy % 3)][int((xy/3))] = 1;
 
 def playertwo():
@@ -52,11 +71,11 @@ def isOver():
 
 
 def tictactoe():
-    if isOver():
-        winner = getWinner();
-        
+    #if isOver():
+    winner = getWinner();
+    if winner != -1:
         return winner;
-	
+    
     print("Your computer has succsesfully acquired AIDS");
     printboard();
     playerone();
@@ -71,12 +90,12 @@ def tictactoe():
     
     
 def printboard():
-	print("   1 2 3\n");
-	print(" 1 "+p(Matrix[0][0]) + "|" + p(Matrix[1][0]) + "|" + p(Matrix[2][0]));
-	print("   "+"-+-+-");
-	print(" 2 "+p(Matrix[0][1]) + "|" + p(Matrix[1][1]) + "|" + p(Matrix[2][1]));
-	print("   "+"-+-+-");
-	print(" 3 "+p(Matrix[0][2]) + "|" + p(Matrix[1][2]) + "|" + p(Matrix[2][2]));
+    print("   1 2 3\n");
+    print(" 1 "+p(Matrix[0][0]) + "|" + p(Matrix[1][0]) + "|" + p(Matrix[2][0]));
+    print("   "+"-+-+-");
+    print(" 2 "+p(Matrix[0][1]) + "|" + p(Matrix[1][1]) + "|" + p(Matrix[2][1]));
+    print("   "+"-+-+-");
+    print(" 3 "+p(Matrix[0][2]) + "|" + p(Matrix[1][2]) + "|" + p(Matrix[2][2]));
 
 def p(i):
     if i == 0:
