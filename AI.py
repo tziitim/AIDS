@@ -1,22 +1,24 @@
 #!/usr/bin/env python
 
 
-import tensorflow as tf;
+
+import tensorflow as tf
+from tensorflow.keras import layers
 
 
-sess = 0# make it null...?
 
 def AIPlayerChoice():
-    #get AI Choice, from neural net
-    
-def TrainAI():
-    #Train Net
-    
+    model();
+	
+
 def InitAI():
-    #Init AI
-    sess = tf.Session();
+    print("Tensorflow Version: " + tf.VERSION)
+    print("TF.Keras Version" + tf.keras.__version__)
     
-    sess.run();
+    model = tf.keras.Sequential([#Use a seqention model to get an output from 0-(n^M)
+        layers.Dense(64, activation = 'relu', inputshape = )
+        
     
+
 def CloseAI():
-    sess.close();
+		
