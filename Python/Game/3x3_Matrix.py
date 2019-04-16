@@ -1,8 +1,7 @@
 import math
+from settings import *
 
 blank = 1;
-
-SIZE = 3;
 
 Matrix = [[0 for x in range(SIZE)] for y in range(SIZE)];
 
@@ -67,7 +66,7 @@ def istaken(pos):
 
 def playerone():
     xy = max(min(int(input()),8),0);
-    
+		
     if istaken(xy):
         xy = max(min(int(input()),8),0);
         print("Please choose a different location on the board, as it is currently occupied.");
@@ -77,21 +76,23 @@ def playerone():
 
 IsAIINIT = 0;
 
+import AI;
+
 def initAI():
-	
-	__import__(AI);
-	
+    #__import__(AI);
+    InitAI();
     IsAIINIT = 1;
 
 def playertwo():
-    xy = max(min(int(input()),8),0);
-    
-    if istaken(xy):
-        xy = max(min(int(input()),8),0);
-        print("Please choose a different location on the board, as it is currently occupied.");
-        playertwo();
-        return
-    Matrix[int(xy % SIZE)][int((xy/SIZE))] = 2;
+    #xy = max(min(int(input()),8),0);
+    #
+    #if istaken(xy):
+    #    xy = max(min(int(input()),8),0);
+    #    print("Please choose a different location on the board, as it is currently occupied.");
+    #    playertwo();
+    #    return
+    #Matrix[int(xy % SIZE)][int((xy/SIZE))] = 2;
+    AI.AIPlayerChoice();
 
 
 def isOver():
@@ -153,6 +154,7 @@ def p(i,j,k):
     return " ";
     
 def main(args):
+    AI.InitAI();
     winner = tictactoe();
     printboard();
     print("the winner is " + winner + "\n")
