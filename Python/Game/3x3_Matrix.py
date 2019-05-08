@@ -7,6 +7,10 @@ Matrix = [[0 for x in range(SIZE)] for y in range(SIZE)];
 
 
 def getWinner():#THIS FUNCTION IS INCOMPLETE!!!  We still need to fix over detection
+    global Matrix
+    global blank
+    
+    
     #total = sum(map(sum, Matrix))
     #total = total % SIZE
     #if total >= 4:
@@ -60,11 +64,15 @@ def getWinner():#THIS FUNCTION IS INCOMPLETE!!!  We still need to fix over detec
 
 
 def istaken(pos):
+    global Matrix
+    global blank
     if Matrix[int(pos % SIZE)][int((pos/SIZE))] == 0:
         return 0;
     return 1;
 
 def playerone():
+    global Matrix
+    global blank
     xy = max(min(int(input()),8),0);
 		
     if istaken(xy):
@@ -84,6 +92,8 @@ def initAI():
     IsAIINIT = 1;
 
 def playertwo():
+    global Matrix
+    global blank
     #xy = max(min(int(input()),8),0);
     #
     #if istaken(xy):
@@ -92,7 +102,7 @@ def playertwo():
     #    playertwo();
     #    return
     #Matrix[int(xy % SIZE)][int((xy/SIZE))] = 2;
-    AI.AIPlayerChoice();
+    AI.AIPlayerChoice(Matrix);
 
 
 def isOver():
